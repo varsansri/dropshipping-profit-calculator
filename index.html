@@ -25,6 +25,19 @@
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is a good profit margin for dropshipping?","acceptedAnswer":{"@type":"Answer","text":"A good dropshipping profit margin is 20–30%+ after all fees. Most new dropshippers overestimate margins by forgetting platform fees (2–15%), payment processing (2.9% + $0.30), ad costs per order, and returns allocation. Margins below 15% are difficult to scale and margins below 10% are generally unsustainable."}},
+    {"@type":"Question","name":"How do I calculate true dropshipping profit?","acceptedAnswer":{"@type":"Answer","text":"True dropshipping profit = Selling Price − Product Cost − Shipping − Platform Fee − Payment Processing − Ad Spend Per Order − Returns Allocation. Most beginners forget the last three items, which can easily eat 20–40% of revenue combined."}},
+    {"@type":"Question","name":"What fees should dropshippers account for?","acceptedAnswer":{"@type":"Answer","text":"Dropshippers must account for: product cost (from AliExpress or supplier), shipping to customer, platform fees (Shopify 2%, eBay 10–13%, Amazon 15%), payment processing (typically 2.9% + $0.30 per order via Stripe or PayPal), ad spend per order (Facebook/TikTok ads divided by orders), and returns rate (industry average 3–5%)."}},
+    {"@type":"Question","name":"What is ROI in dropshipping?","acceptedAnswer":{"@type":"Answer","text":"ROI (Return on Investment) in dropshipping = (Profit ÷ Product Cost) × 100. A product costing $8 that nets $12 profit has a 150% ROI. For a sustainable dropshipping business, aim for ROI above 50% after all fees. Below 30% leaves no room for error or scaling."}},
+    {"@type":"Question","name":"How many orders do I need to make $1,000 per month dropshipping?","acceptedAnswer":{"@type":"Answer","text":"Orders needed for $1,000/month = $1,000 ÷ True Profit Per Order. If your true profit is $8/order, you need 125 orders/month (~4/day). If it's $20/order, you need 50 orders/month (~1.7/day). This calculator shows you your exact order target automatically."}}
+  ]
+}
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -212,6 +225,18 @@ select{
 }
 footer{text-align:center;padding:12px;font-size:11px;color:var(--text-muted);opacity:.7}
 footer a{color:var(--accent);text-decoration:none}
+.faq-section{margin-top:8px;margin-bottom:4px}
+.faq-title{font-size:14px;font-weight:700;color:var(--text-muted);margin-bottom:12px;padding:0 2px}
+.faq-list{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.faq-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.faq-item summary{padding:12px 16px;font-size:13px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;-webkit-tap-highlight-color:transparent}
+.faq-item summary::after{content:'›';font-size:18px;color:var(--accent);transition:transform .2s;flex-shrink:0;margin-left:8px}
+.faq-item[open] summary::after{transform:rotate(90deg)}
+.faq-item p{padding:0 16px 12px;font-size:12px;color:var(--text-muted);line-height:1.6}
+.seo-text{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.seo-text h2{font-size:14px;font-weight:700;margin-bottom:10px;color:var(--text)}
+.seo-text p{font-size:12px;color:var(--text-muted);line-height:1.65;margin-bottom:10px}
+.seo-text p:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -395,7 +420,39 @@ footer a{color:var(--accent);text-decoration:none}
 
   </div>
 
-  <footer>Free ecommerce tools by <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener">Maxi D Bobby Signals</a></footer>
+  <section class="faq-section">
+    <h2 class="faq-title">Dropshipping Profit Calculator — FAQ</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is a good profit margin for dropshipping?</summary>
+        <p>Target 20–30%+ true margin after all fees. Margins below 15% are hard to scale — any ad cost increase or returns spike kills profitability. Margins above 30% give you room to run paid ads and still stay profitable.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What fees do dropshippers actually pay?</summary>
+        <p>Platform fee (Shopify 2%, eBay 10–13%, Amazon 15%), payment processing (2.9% + $0.30 per order), ad spend per order (total ad budget ÷ monthly orders), returns allocation (3–12% depending on product), and product + shipping cost. Most beginners forget 3 of these 5.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How many orders do I need to make $1,000/month dropshipping?</summary>
+        <p>Orders needed = $1,000 ÷ your true profit per order. At $10 true profit: 100 orders/month (~3.3/day). At $20 profit: 50 orders/month. At $5 profit: 200 orders/month. This calculator shows your exact order target under "Orders to $1k/month."</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is dropshipping still profitable in 2024?</summary>
+        <p>Yes — but margins are tighter than 5 years ago due to increased competition and ad costs. The dropshippers who win in 2024 find products with 25%+ true margins, build branded stores, and test with data. This calculator helps you identify which products are actually worth selling.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What platform has the lowest fees for dropshipping?</summary>
+        <p>Your own Shopify store with Stripe/PayPal has the lowest fees (~4–5% total platform + payment). eBay (~10–13%) and Amazon (~15%) take much more but provide built-in traffic. TikTok Shop (~8%) is the current best balance of traffic and fees for new dropshippers.</p>
+      </details>
+    </div>
+    <div class="seo-text">
+      <h2>Dropshipping True Profit Calculator — See What You Actually Keep</h2>
+      <p>Most beginner dropshippers calculate profit as: selling price minus product cost. This approach is dangerously wrong. It ignores platform fees (up to 15%), payment processing (~3%), ad spend per order, and returns — costs that collectively eat 20–40% of revenue before you see a dollar.</p>
+      <p>This dropshipping profit margin calculator accounts for every real cost: product cost plus shipping, the platform fee for your specific marketplace, payment processing at the industry standard rate, your per-order ad spend, and a returns allocation based on your return rate. The result is your true profit per order — what actually hits your bank account.</p>
+      <p>The visual cost bar shows exactly where your revenue goes. Many dropshippers are shocked to discover their "30% margin product" actually nets 6% after ads and fees. Use this calculator before launching any product to ensure you're building a sustainable business, not a busy-looking loss machine.</p>
+    </div>
+  </section>
+
+  <footer>Free tools by <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener">DTB Academy</a></footer>
 </div>
 
 <div class="sticky">
