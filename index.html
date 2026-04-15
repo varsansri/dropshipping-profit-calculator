@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Dropshipping Profit Margin Calculator — True Profit After All Fees</title>
+<meta name="description" content="Calculate your real dropshipping profit margin after product cost, shipping, platform fees, payment processing, ads, and returns. Stop guessing your margins.">
+<meta name="keywords" content="dropshipping profit calculator, dropshipping margin calculator, true profit dropshipping, shopify profit calculator, dropshipping fees calculator, real dropshipping margins, dropshipping break even calculator">
+<link rel="canonical" href="https://varsansri.github.io/dropshipping-profit-calculator/">
+<meta property="og:title" content="Dropshipping True Profit Calculator — What You Actually Keep">
+<meta property="og:description" content="Most dropshippers think they make 30% margin. They're making 4%. See your real profit after ALL fees. Free tool.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dropshipping True Profit Calculator">
+<meta name="twitter:description" content="See your real dropshipping profit margin after all fees. Most are shocked.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Dropshipping True Profit Calculator",
+  "description": "Calculate real dropshipping profit margin after product cost, shipping, platform fees, payment processing, ad spend, and returns rate.",
+  "url": "https://varsansri.github.io/dropshipping-profit-calculator/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --surface:#111118;
+  --surface2:#181820;
+  --accent:#00ff88;
+  --accent-dim:rgba(0,255,136,0.08);
+  --accent-border:rgba(0,255,136,0.25);
+  --text:#efefef;
+  --text-muted:#6b6b80;
+  --border:rgba(255,255,255,0.07);
+  --green:#00e87a;
+  --green-dim:rgba(0,232,122,0.10);
+  --yellow:#ffd93d;
+  --yellow-dim:rgba(255,217,61,0.10);
+  --red:#ff4d4d;
+  --red-dim:rgba(255,77,77,0.10);
+  --radius:14px;
+  --ease:0.2s ease;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  min-height:100vh;padding-bottom:76px;line-height:1.5;
+}
+.wrap{max-width:500px;margin:0 auto;padding:16px 14px 32px}
+
+.header{text-align:center;padding:22px 0 18px}
+.badge{
+  display:inline-block;background:var(--accent-dim);border:1px solid var(--accent-border);
+  color:var(--accent);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 14px;border-radius:20px;margin-bottom:14px;
+}
+h1{font-size:clamp(20px,5.5vw,28px);font-weight:800;line-height:1.25;margin-bottom:8px}
+h1 .hl{color:var(--accent)}
+.tagline{color:var(--text-muted);font-size:13px;max-width:310px;margin:0 auto}
+h2{font-size:13px;color:var(--text-muted);font-weight:400;margin-top:4px}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:12px}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+
+.ig{margin-bottom:14px}
+.il{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:6px}
+.il .hint{opacity:.6;font-size:11px}
+.ir{display:flex;gap:8px;align-items:center}
+.prefix{
+  background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+  padding:10px 12px;font-size:12px;color:var(--text-muted);flex-shrink:0;min-width:34px;text-align:center;
+}
+input[type=number],select{
+  width:100%;background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);font-size:15px;
+  padding:10px 14px;outline:none;
+  transition:border-color var(--ease),box-shadow var(--ease);
+  -webkit-appearance:none;appearance:none;
+}
+input[type=number]:focus,select:focus{border-color:var(--accent-border);box-shadow:0 0 0 3px var(--accent-dim)}
+input[type=number]::-webkit-inner-spin-button{opacity:1}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6' fill='%23666'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:34px;
+}
+.divider{border:none;border-top:1px solid var(--border);margin:6px 0 16px}
+
+.calc-btn{
+  width:100%;background:var(--accent);color:#0a0a0f;font-size:15px;font-weight:800;
+  padding:14px;border:none;border-radius:var(--radius);cursor:pointer;
+  transition:opacity var(--ease),transform var(--ease);-webkit-tap-highlight-color:transparent;
+}
+.calc-btn:active{opacity:.85;transform:scale(.98)}
+
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.shake{animation:shake .3s ease}
+.field-error{border-color:#ff4d4d!important}
+.results{display:none}
+.results.show{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── Profit hero ── */
+.result-main{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:12px}
+.section-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+
+.profit-hero{
+  text-align:center;padding:16px 0 20px;
+  border-bottom:1px solid var(--border);margin-bottom:18px;
+}
+.ph-label{font-size:10px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.ph-value{font-size:48px;font-weight:900;line-height:1;letter-spacing:-1px}
+.ph-value.great{color:var(--green)}
+.ph-value.ok{color:var(--yellow)}
+.ph-value.bad{color:var(--red)}
+.ph-sub{font-size:13px;color:var(--text-muted);margin-top:4px}
+.verdict{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-top:10px;
+}
+.v-great{background:var(--green-dim);border:1px solid var(--green);color:var(--green)}
+.v-ok{background:var(--yellow-dim);border:1px solid var(--yellow);color:var(--yellow)}
+.v-bad{background:var(--red-dim);border:1px solid var(--red);color:var(--red)}
+
+/* ── Cost bar ── */
+.cost-bar-wrap{margin-bottom:16px}
+.cost-bar{
+  height:12px;background:var(--surface2);border-radius:6px;overflow:hidden;
+  display:flex;margin-bottom:10px;
+}
+.cb-product{background:#ff6b35}
+.cb-platform{background:#ff4d4d}
+.cb-payment{background:#a855f7}
+.cb-ads{background:#f5a623}
+.cb-returns{background:#888}
+.cb-profit{background:var(--green)}
+
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted)}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── Breakdown ── */
+.breakdown{background:var(--surface2);border-radius:10px;overflow:hidden}
+.breakdown-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:9px 14px;border-bottom:1px solid var(--border);font-size:12px;
+}
+.breakdown-row:last-child{border-bottom:none}
+.breakdown-row .bl{color:var(--text-muted)}
+.breakdown-row .bv{font-weight:700}
+.breakdown-row.profit-row{background:var(--green-dim)}
+.breakdown-row.profit-row .bl,.breakdown-row.profit-row .bv{color:var(--green)}
+.breakdown-row.loss-row{background:var(--red-dim)}
+.breakdown-row.loss-row .bl,.breakdown-row.loss-row .bv{color:var(--red)}
+
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0}
+.kpi{background:var(--surface2);border-radius:10px;padding:12px}
+.kpi .kl{font-size:10px;color:var(--text-muted);margin-bottom:4px}
+.kpi .kv{font-size:17px;font-weight:700}
+
+.warn{
+  background:var(--red-dim);border:1px solid rgba(255,77,77,.25);
+  border-radius:8px;padding:12px 14px;font-size:12px;color:var(--red);
+  margin-top:14px;display:flex;gap:8px;line-height:1.5;
+}
+.warn.hidden{display:none}
+
+.tg-cta{
+  background:linear-gradient(135deg,rgba(0,255,136,.06),rgba(0,255,136,.01));
+  border:1px solid var(--accent-border);border-radius:var(--radius);padding:18px;margin-bottom:12px;
+}
+.tg-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.tg-body{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:14px}
+.tg-body strong{color:var(--accent)}
+.tg-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--accent);color:#0a0a0f;font-weight:800;font-size:13px;
+  padding:12px 20px;border-radius:9px;text-decoration:none;
+  transition:opacity var(--ease);-webkit-tap-highlight-color:transparent;
+}
+.tg-btn:active{opacity:.85}
+
+.share-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;margin-bottom:12px}
+.share-label{font-size:10px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.share-btns{display:flex;gap:8px}
+.sb{
+  flex:1;padding:10px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;
+  border:1px solid var(--border);background:var(--surface2);color:var(--text);
+  transition:all var(--ease);text-align:center;-webkit-tap-highlight-color:transparent;
+}
+.sb.wa{background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25);color:#25d366}
+.sb.cp{color:var(--accent);border-color:var(--accent-border)}
+.sb:active{transform:scale(.97)}
+
+.sticky{
+  position:fixed;bottom:0;left:0;right:0;background:rgba(10,10,15,.96);
+  border-top:1px solid var(--accent-border);padding:10px 16px;
+  display:flex;align-items:center;gap:12px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:200;
+}
+.sticky .st{font-size:11px;color:var(--text-muted);flex:1;line-height:1.4}
+.sticky .st strong{color:var(--accent);font-size:12px;display:block}
+.sticky-btn{
+  background:var(--accent);color:#0a0a0f;font-weight:800;font-size:11px;
+  padding:8px 14px;border-radius:8px;text-decoration:none;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+}
+footer{text-align:center;padding:12px;font-size:11px;color:var(--text-muted);opacity:.7}
+footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <div class="badge">Dropshipping Tool</div>
+    <h1>Dropshipping <span class="hl">True Profit</span> Calculator</h1>
+    <h2>What is my real dropshipping profit margin after all fees?</h2>
+    <p class="tagline">See exactly what you keep after product cost, platform fees, ads, payments, and returns.</p>
+  </header>
+
+  <div class="card">
+    <div class="card-label">Your Product & Costs</div>
+
+    <div class="ig">
+      <div class="il"><span>Selling Price</span><span class="hint">what customers pay</span></div>
+      <div class="ir">
+        <div class="prefix">$</div>
+        <input type="number" id="price" placeholder="e.g. 39.99" min="0.01" step="0.01" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Product Cost (Landed)</span><span class="hint">AliExpress / supplier price</span></div>
+      <div class="ir">
+        <div class="prefix">$</div>
+        <input type="number" id="cost" placeholder="e.g. 8.50" min="0" step="0.01" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Shipping to Customer</span><span class="hint">0 if free shipping included</span></div>
+      <div class="ir">
+        <div class="prefix">$</div>
+        <input type="number" id="shipping" placeholder="0" min="0" step="0.01" value="0" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Platform</span><span class="hint">fee varies by platform</span></div>
+      <select id="platform">
+        <option value="2.0">Shopify + PayPal (~2%)</option>
+        <option value="5.0" selected>Shopify + Ads setup (~5%)</option>
+        <option value="10.0">eBay (~10%)</option>
+        <option value="13.0">Etsy (~13%)</option>
+        <option value="15.0">Amazon (~15%)</option>
+        <option value="8.0">TikTok Shop (~8%)</option>
+        <option value="3.0">Custom / Own Store (~3%)</option>
+      </select>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Ad Spend Per Order</span><span class="hint">total monthly ads ÷ orders</span></div>
+      <div class="ir">
+        <div class="prefix">$</div>
+        <input type="number" id="adspend" placeholder="e.g. 7.00" min="0" step="0.01" value="5" inputmode="decimal">
+      </div>
+    </div>
+
+    <div class="ig">
+      <div class="il"><span>Returns Rate</span><span class="hint">industry avg is 3%</span></div>
+      <select id="returns">
+        <option value="0">0% — no returns</option>
+        <option value="2">2% — low</option>
+        <option value="3" selected>3% — industry average</option>
+        <option value="5">5% — moderate</option>
+        <option value="8">8% — high</option>
+        <option value="12">12% — clothing/electronics</option>
+      </select>
+    </div>
+
+    <hr class="divider">
+    <button class="calc-btn" onclick="calculate()">Calculate True Profit →</button>
+  </div>
+
+  <div class="results" id="results">
+
+    <div class="result-main">
+      <div class="profit-hero">
+        <div class="ph-label">True Profit Per Order</div>
+        <div class="ph-value great" id="profitVal">$0.00</div>
+        <div class="ph-sub" id="marginSub">0.0% true margin</div>
+        <div class="verdict v-great" id="verdictBadge">⚡ Great Margin</div>
+      </div>
+
+      <div class="section-title">Cost Breakdown</div>
+      <div class="cost-bar-wrap">
+        <div class="cost-bar" id="costBar">
+          <div class="cb-product" id="barProduct" style="width:0%"></div>
+          <div class="cb-platform" id="barPlatform" style="width:0%"></div>
+          <div class="cb-payment" id="barPayment" style="width:0%"></div>
+          <div class="cb-ads" id="barAds" style="width:0%"></div>
+          <div class="cb-returns" id="barReturns" style="width:0%"></div>
+          <div class="cb-profit" id="barProfit" style="width:0%"></div>
+        </div>
+        <div class="legend">
+          <div class="leg-item"><div class="leg-dot" style="background:#ff6b35"></div>Product</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#ff4d4d"></div>Platform</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#a855f7"></div>Payment</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#f5a623"></div>Ads</div>
+          <div class="leg-item"><div class="leg-dot" style="background:#888"></div>Returns</div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--green)"></div>Profit</div>
+        </div>
+      </div>
+
+      <div class="breakdown">
+        <div class="breakdown-row">
+          <span class="bl">Selling Price</span>
+          <span class="bv" id="bPrice" style="color:var(--green)">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="bl">− Product + Shipping</span>
+          <span class="bv" id="bProduct">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="bl">− Platform Fee</span>
+          <span class="bv" id="bPlatform">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="bl">− Payment Processing (2.9% + $0.30)</span>
+          <span class="bv" id="bPayment">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="bl">− Ad Spend Per Order</span>
+          <span class="bv" id="bAds">—</span>
+        </div>
+        <div class="breakdown-row">
+          <span class="bl">− Returns Allocation</span>
+          <span class="bv" id="bReturns">—</span>
+        </div>
+        <div class="breakdown-row" id="finalRow">
+          <span class="bl">= True Profit</span>
+          <span class="bv" id="bProfit">—</span>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="kl">True Margin %</div>
+            <div class="kv" id="kMargin">—</div>
+          </div>
+          <div class="kpi">
+            <div class="kl">ROI on Product Cost</div>
+            <div class="kv" id="kROI">—</div>
+          </div>
+          <div class="kpi">
+            <div class="kl">Orders to $1k/month</div>
+            <div class="kv" id="kOrders">—</div>
+          </div>
+          <div class="kpi">
+            <div class="kl">Daily Orders for $3k/mo</div>
+            <div class="kv" id="kDaily">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="warn hidden" id="warnBox">⚠️ <span id="warnText"></span></div>
+    </div>
+
+    <div class="tg-cta">
+      <div class="tg-title">You know your margins. Now find winning products.</div>
+      <div class="tg-body">
+        Calculating margins is step one. Step two is <strong>finding products with 25%+ true margins</strong>
+        before everyone else does. Our Telegram community shares product research,
+        <strong>supplier contacts, and scaling strategies</strong> that actually work right now.
+      </div>
+      <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener noreferrer" class="tg-btn">
+        🛒 Join Free Ecommerce Community →
+      </a>
+    </div>
+
+    <div class="share-card">
+      <div class="share-label">Share this tool</div>
+      <div class="share-btns">
+        <button class="sb cp" onclick="copyLink(this)">📋 Copy Link</button>
+        <button class="sb wa" onclick="shareWA()">💬 WhatsApp</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Free ecommerce tools by <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener">Maxi D Bobby Signals</a></footer>
+</div>
+
+<div class="sticky">
+  <div class="st">
+    <strong>🛒 Winning Product Research</strong>
+    Free ecommerce community →
+  </div>
+  <a href="https://t.me/DTB_Academy" target="_blank" rel="noopener noreferrer" class="sticky-btn">Join Free</a>
+</div>
+
+<script>
+function fmt(n){ return (n >= 0 ? '' : '−') + '$' + Math.abs(n).toFixed(2); }
+function pct(n){ return n.toFixed(1) + '%'; }
+
+function calculate(){
+  const price    = parseFloat(document.getElementById('price').value);
+  const cost     = parseFloat(document.getElementById('cost').value);
+  const shipping = parseFloat(document.getElementById('shipping').value) || 0;
+  const platPct  = parseFloat(document.getElementById('platform').value);
+  const adSpend  = parseFloat(document.getElementById('adspend').value) || 0;
+  const retPct   = parseFloat(document.getElementById('returns').value);
+
+  if (!price || price <= 0) { shake('price'); return; }
+  if (!cost  || cost  < 0)  { shake('cost');  return; }
+
+  // Calculations
+  const paymentFee  = price * 0.029 + 0.30;
+  const platformFee = price * (platPct / 100);
+  const returnCost  = (cost + shipping) * (retPct / 100);
+  const totalCosts  = cost + shipping + paymentFee + platformFee + adSpend + returnCost;
+  const profit      = price - totalCosts;
+  const margin      = (profit / price) * 100;
+  const roi         = ((cost + shipping) > 0) ? (profit / (cost + shipping)) * 100 : 0;
+
+  // Goals
+  const ordersFor1k = profit > 0 ? Math.ceil(1000 / profit) : '∞';
+  const dailyFor3k  = profit > 0 ? (3000 / profit / 30).toFixed(1) : '∞';
+
+  // Verdict
+  let vc, vt, phc;
+  if      (margin >= 25)   { vc='v-great'; vt='⚡ Great Margin'; phc='great'; }
+  else if (margin >= 15)   { vc='v-ok';    vt='✓ Acceptable Margin'; phc='ok'; }
+  else if (margin >= 5)    { vc='v-ok';    vt='⚠ Thin Margin'; phc='ok'; }
+  else if (margin >= 0)    { vc='v-bad';   vt='⚠ Very Thin — Risky'; phc='bad'; }
+  else                     { vc='v-bad';   vt='✕ Losing Money Per Order'; phc='bad'; }
+
+  // Cost bar percentages
+  const productPct  = (cost + shipping) / price * 100;
+  const platformPct = platformFee / price * 100;
+  const paymentPct  = paymentFee / price * 100;
+  const adsPct      = adSpend / price * 100;
+  const returnsPct  = returnCost / price * 100;
+  const profitPct   = Math.max(0, profit / price * 100);
+
+  // DOM updates
+  const pv = document.getElementById('profitVal');
+  pv.textContent = fmt(profit);
+  pv.className   = 'ph-value ' + phc;
+
+  document.getElementById('marginSub').textContent    = pct(margin) + ' true margin';
+  document.getElementById('verdictBadge').textContent = vt;
+  document.getElementById('verdictBadge').className   = 'verdict ' + vc;
+
+  // Bar
+  document.getElementById('barProduct').style.width  = Math.max(0, productPct) + '%';
+  document.getElementById('barPlatform').style.width = Math.max(0, platformPct) + '%';
+  document.getElementById('barPayment').style.width  = Math.max(0, paymentPct) + '%';
+  document.getElementById('barAds').style.width      = Math.max(0, adsPct) + '%';
+  document.getElementById('barReturns').style.width  = Math.max(0, returnsPct) + '%';
+  document.getElementById('barProfit').style.width   = profitPct + '%';
+
+  // Breakdown
+  document.getElementById('bPrice').textContent    = '$' + price.toFixed(2);
+  document.getElementById('bProduct').textContent  = '−$' + (cost + shipping).toFixed(2);
+  document.getElementById('bPlatform').textContent = '−$' + platformFee.toFixed(2);
+  document.getElementById('bPayment').textContent  = '−$' + paymentFee.toFixed(2);
+  document.getElementById('bAds').textContent      = '−$' + adSpend.toFixed(2);
+  document.getElementById('bReturns').textContent  = '−$' + returnCost.toFixed(2);
+  document.getElementById('bProfit').textContent   = fmt(profit);
+
+  const fr = document.getElementById('finalRow');
+  fr.className = 'breakdown-row ' + (profit >= 0 ? 'profit-row' : 'loss-row');
+
+  // KPIs
+  document.getElementById('kMargin').textContent  = pct(margin);
+  document.getElementById('kMargin').style.color  = margin >= 20 ? 'var(--green)' : margin >= 10 ? 'var(--yellow)' : 'var(--red)';
+  document.getElementById('kROI').textContent     = pct(roi);
+  document.getElementById('kROI').style.color     = roi >= 50 ? 'var(--green)' : roi >= 20 ? 'var(--yellow)' : 'var(--red)';
+  document.getElementById('kOrders').textContent  = profit > 0 ? ordersFor1k + ' orders' : 'N/A';
+  document.getElementById('kDaily').textContent   = profit > 0 ? dailyFor3k + '/day' : 'N/A';
+
+  // Warning
+  const wb = document.getElementById('warnBox');
+  if (profit < 0) {
+    wb.classList.remove('hidden');
+    document.getElementById('warnText').textContent =
+      'You lose $' + Math.abs(profit).toFixed(2) + ' on every order. You must either raise your price, reduce product cost, or cut ad spend before scaling this product.';
+  } else if (margin < 10) {
+    wb.classList.remove('hidden');
+    document.getElementById('warnText').textContent =
+      'Margins under 10% are unsustainable. Any increase in ad costs or returns rate will turn this product unprofitable instantly.';
+  } else {
+    wb.classList.add('hidden');
+  }
+
+  // Show results
+  const res = document.getElementById('results');
+  res.classList.add('show');
+  setTimeout(() => res.scrollIntoView({ behavior:'smooth', block:'nearest' }), 50);
+}
+
+function shake(id){
+  const el = document.getElementById(id);
+  el.classList.add('field-error','shake');
+  setTimeout(()=>el.classList.remove('field-error','shake'), 600);
+}
+
+function copyLink(btn){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    btn.textContent = '✓ Copied!';
+    btn.style.cssText = 'background:rgba(0,232,122,.1);border-color:rgba(0,232,122,.3);color:#00e87a';
+    setTimeout(()=>{ btn.textContent='📋 Copy Link'; btn.style.cssText=''; }, 2200);
+  });
+}
+
+function shareWA(){
+  const msg = encodeURIComponent('Bro found this free tool — Dropshipping True Profit Calculator. Actually useful: ' + window.location.href + ' 🔥');
+  window.open('https://wa.me/?text=' + msg, '_blank');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+</script>
+</body>
+</html>
